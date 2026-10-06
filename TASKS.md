@@ -53,44 +53,44 @@ Add an icon library only when the UI first requires icons.
 - [x] Add application shell.
 - [x] Add a reusable page/container layout.
 - [x] Add error/not-found route.
-- [ ] Add utility for composing class names only if needed.
+- [x] Add utility for composing class names only if needed.
 - [x] Ensure no page depends on authentication yet.
 
 ---
 
 # Phase 3 — Implement the design system
 
-- [ ] Load Gloock and Montserrat.
-- [ ] Add Lumims color tokens to Tailwind.
-- [ ] Add font-family tokens.
-- [ ] Add radius tokens.
-- [ ] Add shadow tokens.
-- [ ] Add global body/background/text styles.
-- [ ] Add consistent focus-visible styles.
-- [ ] Create base UI components as needed:
-  - [ ] Button
-  - [ ] Card
-  - [ ] Badge
-  - [ ] Input
-  - [ ] Progress bar
-  - [ ] Divider
-- [ ] Validate mobile and desktop spacing against `DESIGN.md`.
+- [x] Load Gloock and Montserrat.
+- [x] Add Lumims color tokens to Tailwind.
+- [x] Add font-family tokens.
+- [x] Add radius tokens.
+- [x] Add shadow tokens.
+- [x] Add global body/background/text styles.
+- [x] Add consistent focus-visible styles.
+- [x] Create base UI components as needed:
+  - [x] Button
+  - [x] Card
+  - [x] Badge
+  - [x] Input
+  - [x] Progress bar
+  - [x] Divider
+- [x] Validate mobile and desktop spacing against `DESIGN.md`.
 
 ---
 
 # Phase 4 — Global layout and navigation
 
-- [ ] Build responsive header.
-- [ ] Add Lumims wordmark/text logo placeholder.
-- [ ] Add primary navigation:
-  - [ ] Home
-  - [ ] Learn
-- [ ] Add authentication action area:
-  - [ ] Log in when signed out
-  - [ ] Dashboard/profile access when signed in
-- [ ] Build responsive mobile navigation.
-- [ ] Build footer.
-- [ ] Add subtle motion for menu/navigation state changes.
+- [x] Build responsive header.
+- [x] Add Lumims wordmark/text logo placeholder.
+- [x] Add primary navigation:
+  - [x] Home
+  - [x] Learn
+- [x] Add authentication action area:
+  - [x] Log in when signed out
+  - [x] Dashboard/profile access when signed in
+- [x] Build responsive mobile navigation.
+- [x] Build footer.
+- [x] Add subtle motion for menu/navigation state changes.
 
 Do not spend time on a final custom logo yet unless a dedicated logo task is added later.
 
@@ -100,41 +100,41 @@ Do not spend time on a final custom logo yet unless a dedicated logo task is add
 
 Build `/`.
 
-- [ ] Hero section explaining what Lumims is.
-- [ ] Primary CTA: **Start learning**.
-- [ ] Secondary CTA: browse curriculum.
-- [ ] Explain who Lumims is for.
-- [ ] Explain the learning method:
-  - [ ] Learn the theory
-  - [ ] Configure it on the GH5
-  - [ ] See the visual effect
-  - [ ] Practice it
-- [ ] Preview major curriculum areas.
-- [ ] Add photography/video imagery placeholders with correct aspect ratios.
-- [ ] Explain user progress/account benefits.
-- [ ] Add final CTA section.
-- [ ] Make layout responsive.
-- [ ] Add restrained Framer Motion entrance effects.
-- [ ] Respect reduced-motion preferences.
+- [x] Hero section explaining what Lumims is.
+- [x] Primary CTA: **Start learning**.
+- [x] Secondary CTA: browse curriculum.
+- [x] Explain who Lumims is for.
+- [x] Explain the learning method:
+  - [x] Learn the theory
+  - [x] Configure it on the GH5
+  - [x] See the visual effect
+  - [x] Practice it
+- [x] Preview major curriculum areas.
+- [x] Add photography/video imagery placeholders with correct aspect ratios.
+- [x] Explain user progress/account benefits.
+- [x] Add final CTA section.
+- [x] Make layout responsive.
+- [x] Add restrained Framer Motion entrance effects.
+- [x] Respect reduced-motion preferences.
 
 ---
 
 # Phase 6 — Build the curriculum data layer
 
-- [ ] Translate the curriculum in `CONTENT.md` into structured TypeScript data.
-- [ ] Assign stable IDs to every topic and lesson.
-- [ ] Assign URL-safe slugs.
-- [ ] Preserve the exact topic order from `CONTENT.md`.
-- [ ] Preserve lesson ordering within each topic.
-- [ ] Add short topic descriptions.
-- [ ] Add estimated lesson times where useful.
-- [ ] Create helper functions:
-  - [ ] get all topics
-  - [ ] get topic by slug
-  - [ ] get lesson by slug
-  - [ ] get previous lesson
-  - [ ] get next lesson
-  - [ ] get lesson index / total
+- [x] Translate the curriculum in `CONTENT.md` into structured TypeScript data.
+- [x] Assign stable IDs to every topic and lesson.
+- [x] Assign URL-safe slugs.
+- [x] Preserve the exact topic order from `CONTENT.md`.
+- [x] Preserve lesson ordering within each topic.
+- [x] Add short topic descriptions.
+- [x] Add estimated lesson times where useful.
+- [x] Create helper functions:
+  - [x] get all topics
+  - [x] get topic by slug
+  - [x] get lesson by slug
+  - [x] get previous lesson
+  - [x] get next lesson
+  - [x] get lesson index / total
 
 ---
 

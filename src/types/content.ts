@@ -17,10 +17,10 @@ export interface Lesson {
   id: string
   slug: string
   title: string
-  summary: string
+  summary?: string
   order: number
   estimatedMinutes?: number
-  sections: LessonSection[]
+  sections: readonly LessonSection[]
 }
 
 export interface Topic {
@@ -29,5 +29,5 @@ export interface Topic {
   title: string
   description: string
   order: number
-  lessons: Lesson[]
+  lessons: readonly Lesson[]
 }

@@ -1,14 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { AppShell } from '../app/AppShell'
 import { PageContainer } from '../components/layout/PageContainer'
+import { LandingPage } from '../pages/LandingPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { PlaceholderPage } from '../pages/PlaceholderPage'
 
 const routePlaceholders = {
-  home: {
-    title: 'Lumims',
-    description: 'The Lumims application foundation is ready for its first learning experience.',
-  },
   learn: {
     title: 'Learn',
     description: 'The curriculum overview will be introduced in a later phase.',
@@ -51,6 +48,14 @@ function AppRoute({ page }: { page: keyof typeof routePlaceholders }) {
   )
 }
 
+function LandingRoute() {
+  return (
+    <AppShell>
+      <LandingPage />
+    </AppShell>
+  )
+}
+
 function NotFoundRoute() {
   return (
     <AppShell>
@@ -62,7 +67,7 @@ function NotFoundRoute() {
 }
 
 export const router = createBrowserRouter([
-  { path: '/', element: <AppRoute page="home" /> },
+  { path: '/', element: <LandingRoute /> },
   { path: '/learn', element: <AppRoute page="learn" /> },
   { path: '/learn/:topicSlug', element: <AppRoute page="topic" /> },
   { path: '/learn/:topicSlug/:lessonSlug', element: <AppRoute page="lesson" /> },
