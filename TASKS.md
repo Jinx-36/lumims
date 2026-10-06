@@ -142,14 +142,14 @@ Build `/`.
 
 Build `/learn`.
 
-- [ ] Page introduction.
-- [ ] Display all topics in curriculum order.
-- [ ] Show lesson count per topic.
+- [x] Page introduction.
+- [x] Display all topics in curriculum order.
+- [x] Show lesson count per topic.
 - [ ] Show progress per topic when authenticated.
-- [ ] Show no fake progress when logged out.
-- [ ] Add topic cards with clear navigation.
+- [x] Show no fake progress when logged out.
+- [x] Add topic cards with clear navigation.
 - [ ] Add a “Continue learning” module when progress exists.
-- [ ] Ensure layout remains easy to scan with 26 topics.
+- [x] Ensure layout remains easy to scan with 26 topics.
 
 ---
 
@@ -157,13 +157,13 @@ Build `/learn`.
 
 Build `/learn/:topicSlug`.
 
-- [ ] Topic title and description.
-- [ ] Ordered lesson list.
+- [x] Topic title and description.
+- [x] Ordered lesson list.
 - [ ] Lesson completion states.
 - [ ] Topic progress indicator.
-- [ ] Start/continue topic CTA.
-- [ ] Handle unknown topic slug.
-- [ ] Make the page useful to unauthenticated users too.
+- [x] Start/continue topic CTA.
+- [x] Handle unknown topic slug.
+- [x] Make the page useful to unauthenticated users too.
 
 ---
 
@@ -171,25 +171,25 @@ Build `/learn/:topicSlug`.
 
 Build `/learn/:topicSlug/:lessonSlug`.
 
-- [ ] Desktop curriculum sidebar.
-- [ ] Mobile curriculum navigation/drawer.
-- [ ] Lesson breadcrumb.
-- [ ] Lesson title.
-- [ ] Lesson position indicator.
-- [ ] Lesson body renderer.
-- [ ] Reusable content blocks:
-  - [ ] Paragraph/text section
-  - [ ] Image/media block
-  - [ ] Theory block
-  - [ ] GH5 setup block
-  - [ ] Tip block
-  - [ ] Warning block
-  - [ ] Exercise block
-  - [ ] Key takeaways block
-- [ ] Previous lesson action.
-- [ ] Next lesson action.
+- [x] Desktop curriculum sidebar.
+- [x] Mobile curriculum navigation/drawer.
+- [x] Lesson breadcrumb.
+- [x] Lesson title.
+- [x] Lesson position indicator.
+- [x] Lesson body renderer.
+- [x] Reusable content blocks:
+  - [x] Paragraph/text section
+  - [x] Image/media block
+  - [x] Theory block
+  - [x] GH5 setup block
+  - [x] Tip block
+  - [x] Warning block
+  - [x] Exercise block
+  - [x] Key takeaways block
+- [x] Previous lesson action.
+- [x] Next lesson action.
 - [ ] Complete lesson action.
-- [ ] Handle invalid lesson/topic combinations.
+- [x] Handle invalid lesson/topic combinations.
 
 ---
 
