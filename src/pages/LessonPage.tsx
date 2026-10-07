@@ -92,9 +92,11 @@ export function LessonPage() {
   const result = getLessonBySlug(topicSlug ?? '', lessonSlug ?? '')
   const shouldReduceMotion = useReducedMotion()
   const [isSaving, setIsSaving] = useState(false)
+  const [showBackToTop, setShowBackToTop] = useState(false)
   const visitedLessonId = useRef<string | null>(null)
 
   useEffect(() => { if (status === 'authenticated' && result && visitedLessonId.current !== result.lesson.id) { visitedLessonId.current = result.lesson.id; void recordLessonVisit(result.lesson.id).catch(() => undefined) } }, [recordLessonVisit, result, status])
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'auto' }); const onScroll = () => setShowBackToTop(window.scrollY > 600); window.addEventListener('scroll', onScroll, { passive: true }); return () => window.removeEventListener('scroll', onScroll) }, [lessonSlug, topicSlug])
 
   if (!result) {
     return <LessonNotFound topicSlug={topicSlug} />
@@ -116,7 +118,7 @@ export function LessonPage() {
   return (
     <main>
       <div className={pageContainerClassName + ' py-8 sm:py-10 lg:py-12'}>
-        <div className="grid gap-10 lg:grid-cols-[16rem_minmax(0,42.5rem)] lg:gap-12">
+        <div className="grid gap-10 lg:grid-cols-[16rem_minmax(0,42.5rem)] wide:grid-cols-[16rem_minmax(0,42.5rem)_minmax(15rem,1fr)] lg:gap-12">
           <LessonSidebar
             currentLessonSlug={lesson.slug}
             lessons={topic.lessons}
@@ -201,8 +203,14 @@ export function LessonPage() {
               ) : null}
             </nav>
           </article>
+          <aside aria-hidden="true" className="pointer-events-none hidden wide:block">
+            <div className="sticky top-[calc(var(--site-header-offset)+1rem)] flex h-[calc(100vh-var(--site-header-offset)-2rem)] items-center overflow-hidden">
+              <img className="h-full w-full object-cover object-center opacity-80" src="/images/decorative/lesson-editorial-rail.webp" />
+            </div>
+          </aside>
         </div>
       </div>
+      {showBackToTop ? <button aria-label="Back to top" className="fixed bottom-6 right-6 z-40 rounded-pill border border-border bg-surface px-4 py-3 text-sm font-semibold shadow-2" onClick={() => window.scrollTo({ top: 0, behavior: shouldReduceMotion ? 'auto' : 'smooth' })} type="button">↑ Top</button> : null}
     </main>
   )
 }

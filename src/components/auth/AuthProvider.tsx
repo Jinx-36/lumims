@@ -13,11 +13,15 @@ import { getSupabaseClient } from '../../lib/supabase/client'
 export type AuthStatus = 'loading' | 'authenticated' | 'unauthenticated'
 
 interface AuthContextValue {
+  clearLocalSession: () => Promise<{ error: Error | null }>
+  requestPasswordReset: (email: string) => Promise<{ error: Error | null }>
   session: Session | null
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>
+  signInWithGoogle: () => Promise<{ error: Error | null }>
   signOut: () => Promise<{ error: Error | null }>
   signUp: (email: string, password: string) => Promise<{ error: Error | null; session: Session | null }>
   status: AuthStatus
+  updatePassword: (password: string) => Promise<{ error: Error | null }>
   user: User | null
 }
 
@@ -66,6 +70,16 @@ export function AuthProvider({ children }: PropsWithChildren) {
     const { error } = await getSupabaseClient().auth.signInWithPassword({ email, password })
     return { error }
   }, [])
+  const signInWithGoogle = useCallback(async () => {
+    const { error } = await getSupabaseClient().auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/dashboard`,
+      },
+    })
+
+    return { error }
+  }, [])
 
   const signUp = useCallback(async (email: string, password: string) => {
     const { data, error } = await getSupabaseClient().auth.signUp({
@@ -79,19 +93,47 @@ export function AuthProvider({ children }: PropsWithChildren) {
     return { error, session: data.session }
   }, [])
 
+  const requestPasswordReset = useCallback(async (email: string) => {
+    const { error } = await getSupabaseClient().auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    })
+
+    return { error }
+  }, [])
+
+  const updatePassword = useCallback(async (password: string) => {
+    const { error } = await getSupabaseClient().auth.updateUser({ password })
+    return { error }
+  }, [])
+
   const signOut = useCallback(async () => {
     const { error } = await getSupabaseClient().auth.signOut()
+    if (!error) {
+      setSession(null)
+      setStatus('unauthenticated')
+    }
+    return { error }
+  }, [])
+
+  const clearLocalSession = useCallback(async () => {
+    const { error } = await getSupabaseClient().auth.signOut({ scope: 'local' })
+    setSession(null)
+    setStatus('unauthenticated')
     return { error }
   }, [])
 
   const value = useMemo<AuthContextValue>(() => ({
+    clearLocalSession,
+    requestPasswordReset,
     session,
     signIn,
+    signInWithGoogle,
     signOut,
     signUp,
     status,
+    updatePassword,
     user: session?.user ?? null,
-  }), [session, signIn, signOut, signUp, status])
+  }), [clearLocalSession, requestPasswordReset, session, signIn, signInWithGoogle, signOut, signUp, status, updatePassword])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

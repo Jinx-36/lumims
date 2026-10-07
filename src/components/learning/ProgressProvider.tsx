@@ -13,6 +13,7 @@ interface ProgressContextValue {
   getTopicProgress: (lessonIds: readonly string[]) => ProgressSummary
   overallProgress: ProgressSummary
   continueLearning: CurriculumLesson | null
+  recentLessons: readonly { entry: CurriculumLesson; completed: boolean; lastVisitedAt: string }[]
   setLessonCompleted: (lessonId: string, completed: boolean) => Promise<void>
   recordLessonVisit: (lessonId: string) => Promise<void>
 }
@@ -56,6 +57,7 @@ export function ProgressProvider({ children }: PropsWithChildren) {
     if (current?.lesson && recent?.completed) return getNextLesson(current.topic.slug, current.lesson.slug) ?? allLessons.find(({ lesson }) => !rows[lesson.id]?.completed) ?? null
     return allLessons.find(({ lesson }) => !rows[lesson.id]?.completed) ?? null
   }, [rows])
+  const recentLessons = useMemo(() => Object.values(rows).filter((row) => row.last_visited_at && lessonIds.has(row.lesson_id)).map((row) => ({ entry: allLessons.find(({ lesson }) => lesson.id === row.lesson_id)!, completed: row.completed, lastVisitedAt: row.last_visited_at! })).sort((a, b) => b.lastVisitedAt.localeCompare(a.lastVisitedAt)).slice(0, 5), [rows])
 
   const persist = useCallback(async (lessonId: string, patch: Partial<ProgressRow>) => {
     if (!user) return
@@ -71,7 +73,7 @@ export function ProgressProvider({ children }: PropsWithChildren) {
     await persist(lessonId, { completed, completed_at: completed ? new Date().toISOString() : null })
   }, [persist, rows])
   const recordLessonVisit = useCallback(async (lessonId: string) => { await persist(lessonId, { last_visited_at: new Date().toISOString() }) }, [persist])
-  const value = useMemo(() => ({ status, error, isLessonCompleted, getTopicProgress, overallProgress, continueLearning, setLessonCompleted, recordLessonVisit }), [status, error, isLessonCompleted, getTopicProgress, overallProgress, continueLearning, setLessonCompleted, recordLessonVisit])
+  const value = useMemo(() => ({ status, error, isLessonCompleted, getTopicProgress, overallProgress, continueLearning, recentLessons, setLessonCompleted, recordLessonVisit }), [status, error, isLessonCompleted, getTopicProgress, overallProgress, continueLearning, recentLessons, setLessonCompleted, recordLessonVisit])
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>
 }
 export function useProgress() { const value = useContext(ProgressContext); if (!value) throw new Error('useProgress must be used within a ProgressProvider.'); return value }

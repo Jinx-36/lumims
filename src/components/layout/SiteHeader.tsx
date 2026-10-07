@@ -85,7 +85,7 @@ export function SiteHeader({ authStatus }: SiteHeaderProps) {
   const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <header className="border-b border-border bg-page">
+    <header className="sticky top-0 z-50 border-b border-border bg-page/95 backdrop-blur-sm">
       <div className={cn(pageContainerClassName, 'flex min-h-16 items-center justify-between gap-6 py-3')}>
         <NavLink aria-label="Lumims home" className="type-h2 shrink-0 leading-none text-foreground no-underline" to="/">
           Lumims

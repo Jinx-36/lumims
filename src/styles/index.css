@@ -35,6 +35,8 @@
 
 @layer base {
   html {
+    --site-header-offset: 4.5rem;
+    scroll-padding-top: var(--site-header-offset);
     font-family: var(--font-sans);
     background-color: var(--color-ivory);
     color: var(--color-ink);

@@ -4,6 +4,8 @@
 | --- | --- | --- | --- | --- | --- |
 | `public/images/hero-photographer.webp` | OpenAI image generation | Original image generated for Lumims with the built-in image-generation tool | Original generated asset for this project; no external third-party license | Not required | 2026-10-06 |
 | `public/images/camera-at-sunset.webp` | OpenAI image generation | Original image generated for Lumims with the built-in image-generation tool | Original generated asset for this project; no external third-party license | Not required | 2026-10-06 |
+| `public/images/decorative/learn-camera-line-art.webp` | OpenAI image generation | Original decorative mirrorless-camera line art generated for Lumims | Original generated asset; no external third-party license | Not required | 2026-10-07 |
+| `public/images/decorative/lesson-editorial-rail.webp` | OpenAI image generation | Original decorative photography/video motif rail generated for Lumims | Original generated asset; no external third-party license | Not required | 2026-10-07 |
 | `public/images/lessons/photography-basics/photography-light-path.svg` | Lumims project | Original educational SVG authored in this repository | Original project asset; no external third-party license | Not required | 2026-10-06 |
 | `public/images/lessons/photography-basics/camera-light-path.svg` | Lumims project | Original educational SVG authored in this repository | Original project asset; no external third-party license | Not required | 2026-10-06 |
 | `public/images/lessons/photography-basics/light-quality-and-direction.svg` | Lumims project | Original educational SVG authored in this repository | Original project asset; no external third-party license | Not required | 2026-10-06 |

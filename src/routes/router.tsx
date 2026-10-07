@@ -1,4 +1,9 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { useAuth } from '../components/auth/AuthProvider'
+import { DashboardPage } from '../pages/DashboardPage'
+import { ForgotPasswordPage } from '../pages/ForgotPasswordPage'
+import { ProfilePage } from '../pages/ProfilePage'
+import { ResetPasswordPage } from '../pages/ResetPasswordPage'
 import { AppShell } from '../app/AppShell'
 import { PageContainer } from '../components/layout/PageContainer'
 import { LandingPage } from '../pages/LandingPage'
@@ -6,32 +11,8 @@ import { LoginPage } from '../pages/LoginPage'
 import { LearnPage } from '../pages/LearnPage'
 import { LessonPage } from '../pages/LessonPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
-import { PlaceholderPage } from '../pages/PlaceholderPage'
 import { SignupPage } from '../pages/SignupPage'
 import { TopicPage } from '../pages/TopicPage'
-
-const routePlaceholders = {
-  dashboard: {
-    title: 'Dashboard',
-    description: 'Learning progress will be available after Supabase integration.',
-  },
-  profile: {
-    title: 'Profile',
-    description: 'Account controls will be available after authentication is introduced.',
-  },
-} as const
-
-function AppRoute({ page }: { page: keyof typeof routePlaceholders }) {
-  const { title, description } = routePlaceholders[page]
-
-  return (
-    <AppShell>
-      <PageContainer>
-        <PlaceholderPage title={title} description={description} />
-      </PageContainer>
-    </AppShell>
-  )
-}
 
 function LandingRoute() {
   return (
@@ -82,6 +63,14 @@ function LoginRoute() {
 function SignupRoute() {
   return <AppShell><SignupPage /></AppShell>
 }
+function ForgotPasswordRoute() {
+  return <AppShell><ForgotPasswordPage /></AppShell>
+}
+function ResetPasswordRoute() {
+  return <AppShell><ResetPasswordPage /></AppShell>
+}
+function DashboardRoute() { const { status } = useAuth(); if (status === 'loading') return <AppShell><PageContainer><p className="text-muted">Loading your dashboard…</p></PageContainer></AppShell>; if (status !== 'authenticated') return <Navigate replace to="/login" />; return <AppShell><DashboardPage /></AppShell> }
+function ProfileRoute() { const { status } = useAuth(); if (status === 'loading') return <AppShell><PageContainer><p className="text-muted">Loading your profile…</p></PageContainer></AppShell>; if (status !== 'authenticated') return <Navigate replace to="/login" />; return <AppShell><ProfilePage /></AppShell> }
 
 export const router = createBrowserRouter([
   { path: '/', element: <LandingRoute /> },
@@ -90,7 +79,9 @@ export const router = createBrowserRouter([
   { path: '/learn/:topicSlug/:lessonSlug', element: <LessonRoute /> },
   { path: '/login', element: <LoginRoute /> },
   { path: '/signup', element: <SignupRoute /> },
-  { path: '/dashboard', element: <AppRoute page="dashboard" /> },
-  { path: '/profile', element: <AppRoute page="profile" /> },
+  { path: '/forgot-password', element: <ForgotPasswordRoute /> },
+  { path: '/reset-password', element: <ResetPasswordRoute /> },
+  { path: '/dashboard', element: <DashboardRoute /> },
+  { path: '/profile', element: <ProfileRoute /> },
   { path: '*', element: <NotFoundRoute /> },
 ])

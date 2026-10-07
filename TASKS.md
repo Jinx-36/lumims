@@ -242,8 +242,8 @@ Create a complete vertical slice first.
 
 Optional later:
 
-- [ ] Password reset.
-- [ ] OAuth providers.
+- [x] Password reset.
+- [x] OAuth providers.
 
 Do not add optional providers until the base email/password flow works.
 
@@ -267,14 +267,14 @@ Do not add optional providers until the base email/password flow works.
 
 Build `/dashboard`.
 
-- [ ] Protect route for authenticated users.
-- [ ] Overall progress summary.
-- [ ] Continue learning card.
-- [ ] Topic progress list.
-- [ ] Recently visited lessons.
-- [ ] Completed lessons count.
-- [ ] Empty state for a new user.
-- [ ] Link back into learning content.
+- [x] Protect route for authenticated users.
+- [x] Overall progress summary.
+- [x] Continue learning card.
+- [x] Topic progress list.
+- [x] Recently visited lessons.
+- [x] Completed lessons count.
+- [x] Empty state for a new user.
+- [x] Link back into learning content.
 
 Keep the dashboard calm and educational, not gamified.
 
@@ -284,12 +284,12 @@ Keep the dashboard calm and educational, not gamified.
 
 Build `/profile`.
 
-- [ ] Display account email.
-- [ ] Optional username editing.
-- [ ] Optional avatar placeholder/support.
-- [ ] Save profile changes to Supabase.
-- [ ] Logout action.
-- [ ] Clear success/error states.
+- [x] Display account email.
+- [x] Optional username editing.
+- [x] Optional avatar placeholder/support.
+- [x] Save profile changes to Supabase.
+- [x] Logout action.
+- [x] Clear success/error states.
 
 Do not add account deletion or complex settings until requested.
 

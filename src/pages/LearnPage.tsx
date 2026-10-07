@@ -27,8 +27,8 @@ export function LearnPage() {
   return (
     <main>
       <section className="border-b border-border">
-        <div className={pageContainerClassName + ' py-16 sm:py-20 lg:py-24'}>
-          <motion.div className="max-w-3xl" {...entrance}>
+        <div className={pageContainerClassName + ' relative py-16 sm:py-20 lg:py-24'}>
+          <motion.div className="relative z-10 max-w-3xl wide:max-w-2xl" {...entrance}>
             <Badge>Learning path</Badge>
             <h1 className="mt-5 font-display text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
               Learn photography and video with a clear path forward.
@@ -75,6 +75,7 @@ export function LearnPage() {
             {status === 'authenticated' && continueLearning ? <div className="mt-7 border-l-2 border-accent bg-surface-alt p-5"><p className="type-label text-accent">Continue learning</p><p className="mt-2 font-semibold text-ink">{continueLearning.topic.title} · {continueLearning.lesson.title}</p><Link className="mt-3 inline-block font-semibold text-accent hover:underline" to={`/learn/${continueLearning.topic.slug}/${continueLearning.lesson.slug}`}>Continue lesson</Link></div> : null}
             {status === 'authenticated' && error ? <p className="mt-5 text-sm text-accent" role="status">{error}</p> : null}
           </motion.div>
+          <img alt="" aria-hidden="true" className="pointer-events-none absolute right-0 top-1/2 hidden w-[34rem] -translate-y-1/2 opacity-80 wide:block" src="/images/decorative/learn-camera-line-art.webp" />
         </div>
       </section>
 

@@ -1,6 +1,8 @@
 import { useState, type FormEvent } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../components/auth/AuthProvider'
+import { GoogleMark } from '../components/auth/GoogleMark'
+import { PasswordInput } from '../components/auth/PasswordInput'
 import { Button } from '../components/ui/Button'
 import { Input } from '../components/ui/Input'
 import { AuthPageLayout } from './AuthPageLayout'
@@ -10,7 +12,7 @@ function validateEmail(email: string) {
 }
 
 export function SignupPage() {
-  const { signUp, status } = useAuth()
+  const { signInWithGoogle, signUp, status } = useAuth()
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -19,6 +21,7 @@ export function SignupPage() {
   const [formError, setFormError] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false)
 
   if (status === 'authenticated') {
     return <Navigate replace to="/dashboard" />
@@ -60,6 +63,23 @@ export function SignupPage() {
     }
   }
 
+  async function handleGoogleSignIn() {
+    setFormError(null)
+    setSuccessMessage(null)
+    setIsGoogleLoading(true)
+
+    try {
+      const { error } = await signInWithGoogle()
+      if (error) {
+        setFormError('Google sign-in could not be started. Please try again.')
+        setIsGoogleLoading(false)
+      }
+    } catch {
+      setFormError('Google sign-in could not be started. Please try again.')
+      setIsGoogleLoading(false)
+    }
+  }
+
   if (status === 'loading') {
     return <AuthPageLayout footer={null} lead="Checking your account." title="Create an account" />
   }
@@ -69,10 +89,15 @@ export function SignupPage() {
       <form className="space-y-5" noValidate onSubmit={handleSubmit}>
         {formError ? <p className="rounded-sm border border-accent bg-accent-soft px-3 py-2 text-sm text-foreground" role="alert">{formError}</p> : null}
         {successMessage ? <p className="rounded-sm border border-border bg-surface-alt px-3 py-2 text-sm text-foreground" role="status">{successMessage}</p> : null}
-        <Input autoComplete="email" disabled={isSubmitting} error={errors.email} label="Email" onChange={(event) => setEmail(event.target.value)} required type="email" value={email} />
-        <Input autoComplete="new-password" disabled={isSubmitting} error={errors.password} label="Password" onChange={(event) => setPassword(event.target.value)} required type="password" value={password} />
-        <Input autoComplete="new-password" disabled={isSubmitting} error={errors.passwordConfirmation} label="Confirm password" onChange={(event) => setPasswordConfirmation(event.target.value)} required type="password" value={passwordConfirmation} />
+        <Input autoComplete="email" disabled={isSubmitting} error={errors.email} label="Email" onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" required type="email" value={email} />
+        <PasswordInput autoComplete="new-password" disabled={isSubmitting} error={errors.password} label="Password" onChange={(event) => setPassword(event.target.value)} placeholder="Create a password" required value={password} />
+        <PasswordInput autoComplete="new-password" disabled={isSubmitting} error={errors.passwordConfirmation} label="Confirm password" onChange={(event) => setPasswordConfirmation(event.target.value)} placeholder="Re-enter your password" required value={passwordConfirmation} />
         <Button className="w-full" disabled={isSubmitting} type="submit">{isSubmitting ? 'Creating account…' : 'Create account'}</Button>
+        <div className="flex items-center gap-3 text-xs text-muted"><span className="h-px flex-1 bg-border" />or<span className="h-px flex-1 bg-border" /></div>
+        <Button className="w-full gap-2" disabled={isGoogleLoading || isSubmitting} onClick={() => void handleGoogleSignIn()} type="button" variant="secondary">
+          <GoogleMark />
+          {isGoogleLoading ? 'Redirecting…' : 'Continue with Google'}
+        </Button>
       </form>
     </AuthPageLayout>
   )

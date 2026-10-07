@@ -61,7 +61,7 @@ export function LessonSidebar({
 }: LessonNavigationProps) {
   return (
     <aside aria-label="Current topic lessons" className="hidden lg:block">
-      <div className="border-r border-border pr-6">
+      <div className="sticky top-[calc(var(--site-header-offset)+1rem)] max-h-[calc(100vh-var(--site-header-offset)-2rem)] overflow-y-auto border-r border-border pr-6">
         <Link className="type-label text-accent hover:underline" to="/learn">
           All topics
         </Link>
