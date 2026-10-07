@@ -5,11 +5,15 @@ import { pageContainerClassName } from '../components/layout/PageContainer'
 import { TopicCard } from '../components/learning/TopicCard'
 import { Badge } from '../components/ui/Badge'
 import { getAllTopics } from '../content/curriculum'
+import { useAuth } from '../components/auth/AuthProvider'
+import { useProgress } from '../components/learning/ProgressProvider'
 
 const topics = getAllTopics()
 const lessonCount = topics.reduce((total, topic) => total + topic.lessons.length, 0)
 
 export function LearnPage() {
+  const { status } = useAuth()
+  const { continueLearning, error } = useProgress()
   const prefersReducedMotion = useReducedMotion()
 
   const entrance = prefersReducedMotion
@@ -68,6 +72,8 @@ export function LearnPage() {
                 Sign in later to save your progress.
               </Link>
             </p>
+            {status === 'authenticated' && continueLearning ? <div className="mt-7 border-l-2 border-accent bg-surface-alt p-5"><p className="type-label text-accent">Continue learning</p><p className="mt-2 font-semibold text-ink">{continueLearning.topic.title} · {continueLearning.lesson.title}</p><Link className="mt-3 inline-block font-semibold text-accent hover:underline" to={`/learn/${continueLearning.topic.slug}/${continueLearning.lesson.slug}`}>Continue lesson</Link></div> : null}
+            {status === 'authenticated' && error ? <p className="mt-5 text-sm text-accent" role="status">{error}</p> : null}
           </motion.div>
         </div>
       </section>

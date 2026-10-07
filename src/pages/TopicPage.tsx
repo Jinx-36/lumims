@@ -6,6 +6,9 @@ import { LessonList } from '../components/learning/LessonList'
 import { Badge } from '../components/ui/Badge'
 import { buttonClassName } from '../components/ui/Button'
 import { getTopicBySlug } from '../content/curriculum'
+import { useAuth } from '../components/auth/AuthProvider'
+import { useProgress } from '../components/learning/ProgressProvider'
+import { ProgressBar } from '../components/ui/ProgressBar'
 import type { Topic } from '../types'
 
 function formatTopicNumber(order: number) {
@@ -41,6 +44,8 @@ function TopicNotFound() {
 }
 
 export function TopicPage() {
+  const { status } = useAuth()
+  const { getTopicProgress, isLessonCompleted } = useProgress()
   const { topicSlug } = useParams()
   const topic = getTopicBySlug(topicSlug ?? '')
   const prefersReducedMotion = useReducedMotion()
@@ -52,6 +57,9 @@ export function TopicPage() {
   const firstLesson = topic.lessons[0]
   const lessonCount = topic.lessons.length
   const totalMinutes = getTopicDuration(topic)
+  const progress = getTopicProgress(topic.lessons.map((lesson) => lesson.id))
+  const firstIncomplete = topic.lessons.find((lesson) => !isLessonCompleted(lesson.id))
+  const actionLesson = firstIncomplete ?? firstLesson
   const entrance = prefersReducedMotion
     ? undefined
     : {
@@ -99,13 +107,14 @@ export function TopicPage() {
                 </div>
               ) : null}
             </dl>
+            {status === 'authenticated' ? <ProgressBar className="mt-6 max-w-sm" label={`${progress.completedLessons} of ${progress.totalLessons} lessons completed`} max={progress.totalLessons} value={progress.completedLessons} /> : null}
 
-            {firstLesson ? (
+            {actionLesson ? (
               <Link
                 className={buttonClassName({ className: 'mt-8' })}
-                to={'/learn/' + topic.slug + '/' + firstLesson.slug}
+                to={'/learn/' + topic.slug + '/' + actionLesson.slug}
               >
-                Start topic
+                {progress.completedLessons === progress.totalLessons ? 'Review topic' : progress.completedLessons ? 'Continue topic' : 'Start topic'}
               </Link>
             ) : null}
           </motion.div>
@@ -124,7 +133,7 @@ export function TopicPage() {
               with what you are photographing or filming today.
             </p>
 
-            <LessonList lessons={topic.lessons} topicSlug={topic.slug} />
+            <LessonList lessons={topic.lessons} topicSlug={topic.slug} completionByLessonId={Object.fromEntries(topic.lessons.filter((lesson) => isLessonCompleted(lesson.id)).map((lesson) => [lesson.id, 'complete' as const]))} />
 
             <p className="mt-8 text-sm leading-6 text-ink-muted">
               You can browse every lesson without an account.{' '}

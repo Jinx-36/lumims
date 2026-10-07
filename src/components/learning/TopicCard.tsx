@@ -5,6 +5,9 @@ import { cn } from '../../utils/cn'
 import { Badge } from '../ui/Badge'
 import { buttonClassName } from '../ui/Button'
 import { Card } from '../ui/Card'
+import { ProgressBar } from '../ui/ProgressBar'
+import { useAuth } from '../auth/AuthProvider'
+import { useProgress } from './ProgressProvider'
 
 export interface TopicCardProps {
   topic: Topic
@@ -22,8 +25,11 @@ function getTopicDuration(topic: Topic) {
 }
 
 export function TopicCard({ topic }: TopicCardProps) {
+  const { status } = useAuth()
+  const { getTopicProgress } = useProgress()
   const lessonCount = topic.lessons.length
   const totalMinutes = getTopicDuration(topic)
+  const progress = getTopicProgress(topic.lessons.map((lesson) => lesson.id))
 
   return (
     <li>
@@ -45,6 +51,7 @@ export function TopicCard({ topic }: TopicCardProps) {
         <p className="mt-3 max-w-prose text-sm leading-6 text-ink-muted">
           {topic.description}
         </p>
+        {status === 'authenticated' ? <ProgressBar className="mt-5" label={`${progress.completedLessons} of ${progress.totalLessons} lessons`} max={progress.totalLessons} value={progress.completedLessons} /> : null}
 
         <Link
           className={cn(

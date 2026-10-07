@@ -3,6 +3,7 @@ import type {
   Gh5SetupLessonSection,
   KeyTakeawaysLessonSection,
   LessonSection,
+  LessonSource,
   MediaLessonSection,
   TextLessonSection,
   TheoryLessonSection,
@@ -13,6 +14,10 @@ import { Card } from '../ui/Card'
 
 interface LessonBodyProps {
   sections: readonly LessonSection[]
+}
+
+interface LessonSourcesProps {
+  sources: readonly LessonSource[]
 }
 
 function Paragraphs({ paragraphs }: { paragraphs: readonly string[] }) {
@@ -29,7 +34,7 @@ function TextSection({ paragraphs }: TextLessonSection) {
   return <Paragraphs paragraphs={paragraphs} />
 }
 
-function MediaSection({ alt, aspectRatio = 'photo', caption, src }: MediaLessonSection) {
+function MediaSection({ alt, aspectRatio = 'photo', caption, height, mobileSrc, src, width }: MediaLessonSection) {
   const aspectRatioClassName = {
     photo: 'aspect-[4/3]',
     video: 'aspect-video',
@@ -38,12 +43,17 @@ function MediaSection({ alt, aspectRatio = 'photo', caption, src }: MediaLessonS
 
   return (
     <figure className="space-y-3">
-      <img
-        alt={alt}
-        className={aspectRatioClassName + ' w-full rounded-md border border-border object-cover'}
-        loading="lazy"
-        src={src}
-      />
+      <picture>
+        {mobileSrc ? <source media="(max-width: 639px)" srcSet={mobileSrc} /> : null}
+        <img
+          alt={alt}
+          className={(width && height ? '' : aspectRatioClassName) + ' w-full rounded-md border border-border object-cover'}
+          height={height}
+          loading="lazy"
+          src={src}
+          width={width}
+        />
+      </picture>
       {caption ? <figcaption className="text-sm leading-6 text-ink-muted">{caption}</figcaption> : null}
     </figure>
   )
@@ -196,5 +206,35 @@ export function LessonBody({ sections }: LessonBodyProps) {
         <LessonSectionRenderer key={section.id} section={section} />
       ))}
     </div>
+  )
+}
+
+export function LessonSources({ sources }: LessonSourcesProps) {
+  if (!sources.length) {
+    return null
+  }
+
+  return (
+    <section aria-labelledby="lesson-sources-heading" className="border-t border-border pt-8">
+      <p className="type-label text-accent">Sources &amp; further reading</p>
+      <h2 id="lesson-sources-heading" className="mt-3 type-h2 text-ink">
+        Continue exploring
+      </h2>
+      <ul className="mt-5 space-y-3">
+        {sources.map((source) => (
+          <li key={source.url}>
+            <a
+              className="text-sm font-semibold leading-6 text-accent hover:underline"
+              href={source.url}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {source.title}
+            </a>
+            <p className="text-sm leading-6 text-ink-muted">{source.publisher}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }

@@ -6,7 +6,7 @@ import { AccountActions, type NavigationAccountState } from './AccountActions'
 import { pageContainerClassName } from './PageContainer'
 
 interface SiteHeaderProps {
-  accountState?: NavigationAccountState
+  authStatus: 'loading' | NavigationAccountState
 }
 
 const navigationItems = [
@@ -58,7 +58,7 @@ function MenuIcon({ isOpen }: { isOpen: boolean }) {
   )
 }
 
-export function SiteHeader({ accountState = 'signed-out' }: SiteHeaderProps) {
+export function SiteHeader({ authStatus }: SiteHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
   const shouldReduceMotion = useReducedMotion()
@@ -93,7 +93,7 @@ export function SiteHeader({ accountState = 'signed-out' }: SiteHeaderProps) {
 
         <div className="hidden items-center gap-10 lg:flex">
           <PrimaryNavigation />
-          <AccountActions accountState={accountState} />
+          <AccountActions accountState={authStatus} />
         </div>
 
         <button
@@ -120,7 +120,7 @@ export function SiteHeader({ accountState = 'signed-out' }: SiteHeaderProps) {
           >
             <div className={cn(pageContainerClassName, 'space-y-6 py-6')}>
               <PrimaryNavigation className="flex-col items-start gap-5" onNavigate={closeMenu} />
-              <AccountActions accountState={accountState} className="flex-col items-stretch gap-3" onNavigate={closeMenu} />
+              <AccountActions accountState={authStatus} className="flex-col items-stretch gap-3" onNavigate={closeMenu} />
             </div>
           </motion.div>
         ) : null}

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">One-stop changes in aperture, shutter speed, and ISO</title>
+  <desc id="description">Three ladders demonstrate one-stop steps. Aperture values f 2.8 through f 11, shutter speeds one sixtieth through one five-hundredth, and ISO 100 through 800.</desc>
+  <rect width="1200" height="760" fill="#F5F0EE"/>
+  <style>
+    .heading { fill:#1F1815; font:600 25px Montserrat,Arial,sans-serif; }
+    .label { fill:#1F1815; font:600 19px Montserrat,Arial,sans-serif; }
+    .detail { fill:#6E6259; font:400 16px Montserrat,Arial,sans-serif; }
+    .small { fill:#8B1E1E; font:600 14px Montserrat,Arial,sans-serif; letter-spacing:1.4px; }
+    .cell { fill:#FFFFFF; stroke:#E1D5CE; stroke-width:2; }
+  </style>
+  <text x="72" y="76" class="small">STOPS</text>
+  <text x="72" y="124" class="heading">A full stop is a doubling or halving relationship.</text>
+  <text x="72" y="154" class="detail">The arrow direction below shows a one-stop change at each step.</text>
+  <g transform="translate(74 214)">
+    <text x="140" y="0" text-anchor="middle" class="heading">Aperture</text>
+    <text x="140" y="30" text-anchor="middle" class="detail">More to less light</text>
+    <g transform="translate(0 62)">
+      <rect class="cell" width="280" height="70" rx="8"/><text x="140" y="44" text-anchor="middle" class="label">f/2.8</text>
+      <text x="140" y="101" text-anchor="middle" class="small">−1 STOP</text>
+      <rect class="cell" y="122" width="280" height="70" rx="8"/><text x="140" y="166" text-anchor="middle" class="label">f/4</text>
+      <text x="140" y="223" text-anchor="middle" class="small">−1 STOP</text>
+      <rect class="cell" y="244" width="280" height="70" rx="8"/><text x="140" y="288" text-anchor="middle" class="label">f/5.6</text>
+      <text x="140" y="345" text-anchor="middle" class="small">−1 STOP</text>
+      <rect class="cell" y="366" width="280" height="70" rx="8"/><text x="140" y="410" text-anchor="middle" class="label">f/8</text>
+    </g>
+  </g>
+  <g transform="translate(460 214)">
+    <text x="140" y="0" text-anchor="middle" class="heading">Shutter speed</text>
+    <text x="140" y="30" text-anchor="middle" class="detail">Longer to shorter duration</text>
+    <g transform="translate(0 62)">
+      <rect class="cell" width="280" height="70" rx="8"/><text x="140" y="44" text-anchor="middle" class="label">1/60 s</text>
+      <text x="140" y="101" text-anchor="middle" class="small">−1 STOP</text>
+      <rect class="cell" y="122" width="280" height="70" rx="8"/><text x="140" y="166" text-anchor="middle" class="label">1/125 s</text>
+      <text x="140" y="223" text-anchor="middle" class="small">−1 STOP</text>
+      <rect class="cell" y="244" width="280" height="70" rx="8"/><text x="140" y="288" text-anchor="middle" class="label">1/250 s</text>
+      <text x="140" y="345" text-anchor="middle" class="small">−1 STOP</text>
+      <rect class="cell" y="366" width="280" height="70" rx="8"/><text x="140" y="410" text-anchor="middle" class="label">1/500 s</text>
+    </g>
+  </g>
+  <g transform="translate(846 214)">
+    <text x="140" y="0" text-anchor="middle" class="heading">ISO</text>
+    <text x="140" y="30" text-anchor="middle" class="detail">Lower to higher output setting</text>
+    <g transform="translate(0 62)">
+      <rect class="cell" width="280" height="70" rx="8"/><text x="140" y="44" text-anchor="middle" class="label">ISO 100</text>
+      <text x="140" y="101" text-anchor="middle" class="small">+1 STOP</text>
+      <rect class="cell" y="122" width="280" height="70" rx="8"/><text x="140" y="166" text-anchor="middle" class="label">ISO 200</text>
+      <text x="140" y="223" text-anchor="middle" class="small">+1 STOP</text>
+      <rect class="cell" y="244" width="280" height="70" rx="8"/><text x="140" y="288" text-anchor="middle" class="label">ISO 400</text>
+      <text x="140" y="345" text-anchor="middle" class="small">+1 STOP</text>
+      <rect class="cell" y="366" width="280" height="70" rx="8"/><text x="140" y="410" text-anchor="middle" class="label">ISO 800</text>
+    </g>
+  </g>
+  <text x="72" y="708" class="detail">For a similar image brightness, a one-stop decrease in one setting can be offset by a one-stop increase in another.</text>
+</svg>

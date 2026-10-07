@@ -20,9 +20,12 @@ export interface TextLessonSection extends LessonSectionBase {
 export interface MediaLessonSection extends LessonSectionBase {
   kind: 'media'
   src: string
+  mobileSrc?: string
   alt: string
   caption?: string
   aspectRatio?: 'photo' | 'video' | 'square'
+  width?: number
+  height?: number
 }
 
 export interface TheoryLessonSection extends LessonSectionBase {
@@ -67,6 +70,12 @@ export interface KeyTakeawaysLessonSection extends LessonSectionBase {
   items: readonly string[]
 }
 
+export interface LessonSource {
+  title: string
+  publisher: string
+  url: string
+}
+
 export type LessonSection =
   | TextLessonSection
   | MediaLessonSection
@@ -85,6 +94,7 @@ export interface Lesson {
   order: number
   estimatedMinutes?: number
   sections: readonly LessonSection[]
+  sources?: readonly LessonSource[]
 }
 
 export interface Topic {

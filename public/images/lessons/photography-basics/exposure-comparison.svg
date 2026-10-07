@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title description">
+  <title id="title">Underexposed, intentional, and overexposed versions of one scene</title>
+  <desc id="description">A triptych of the same simple landscape scene. The left is too dark, the middle retains useful shadow and highlight detail, and the right has clipped bright sky detail.</desc>
+  <rect width="1200" height="680" fill="#F5F0EE"/>
+  <style>
+    .label { fill:#1F1815; font:600 25px Montserrat,Arial,sans-serif; }
+    .detail { fill:#6E6259; font:400 16px Montserrat,Arial,sans-serif; }
+    .small { fill:#8B1E1E; font:600 14px Montserrat,Arial,sans-serif; letter-spacing:1.4px; }
+    .frame { fill:#FFFFFF; stroke:#E1D5CE; stroke-width:2; }
+  </style>
+  <text x="72" y="76" class="small">EXPOSURE COMPARISON</text>
+  <text x="72" y="124" class="label">The same scene can preserve, lose, or deliberately reshape tonal detail.</text>
+  <g transform="translate(72 184)">
+    <rect class="frame" width="326" height="362" rx="12"/>
+    <rect x="28" y="80" width="270" height="188" rx="4" fill="#511010"/>
+    <circle cx="242" cy="117" r="20" fill="#C9A96E" opacity=".4"/>
+    <path d="M28 237L111 176 188 226 246 159 298 207V268H28Z" fill="#1F1815"/>
+    <path d="M85 224v44M85 207l-27 34h54Z" stroke="#EDE4DF" stroke-width="7" fill="#1F1815"/>
+    <text x="28" y="319" class="label">Underexposed</text>
+    <text x="28" y="344" class="detail">Important shadows may lose detail.</text>
+  </g>
+  <g transform="translate(437 184)">
+    <rect class="frame" width="326" height="362" rx="12"/>
+    <rect x="28" y="80" width="270" height="188" rx="4" fill="#C9A96E"/>
+    <circle cx="242" cy="117" r="20" fill="#FFFFFF"/>
+    <path d="M28 237L111 176 188 226 246 159 298 207V268H28Z" fill="#6E6259"/>
+    <path d="M85 224v44M85 207l-27 34h54Z" stroke="#1F1815" stroke-width="7" fill="#EDE4DF"/>
+    <text x="28" y="319" class="label">Intentional exposure</text>
+    <text x="28" y="344" class="detail">Useful subject and highlight detail remain.</text>
+  </g>
+  <g transform="translate(802 184)">
+    <rect class="frame" width="326" height="362" rx="12"/>
+    <rect x="28" y="80" width="270" height="188" rx="4" fill="#FFFFFF"/>
+    <circle cx="242" cy="117" r="20" fill="#FFFFFF"/>
+    <path d="M28 237L111 176 188 226 246 159 298 207V268H28Z" fill="#C9A96E"/>
+    <path d="M85 224v44M85 207l-27 34h54Z" stroke="#6E6259" stroke-width="7" fill="#EDE4DF"/>
+    <path d="M32 85h262" stroke="#F1DCDC" stroke-width="13"/>
+    <text x="28" y="319" class="label">Overexposed</text>
+    <text x="28" y="344" class="detail">Bright areas can clip to white with no detail.</text>
+  </g>
+  <text x="72" y="620" class="detail">“Correct” depends on intent, but clipping is a technical limit: once detail is recorded as pure white or black, it may not be recoverable.</text>
+</svg>

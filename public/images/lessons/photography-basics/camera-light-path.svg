@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title description">
+  <title id="title">Light path through a mirrorless camera</title>
+  <desc id="description">An original simplified cross-section diagram showing light traveling from a subject through the lens and aperture, onto a sensor, then to processing and a memory card.</desc>
+  <rect width="1200" height="680" fill="#F5F0EE"/>
+  <style>
+    .label { fill:#1F1815; font:600 24px Montserrat,Arial,sans-serif; }
+    .detail { fill:#6E6259; font:400 18px Montserrat,Arial,sans-serif; }
+    .small { fill:#8B1E1E; font:600 14px Montserrat,Arial,sans-serif; letter-spacing:1.5px; }
+    .line { stroke:#8B1E1E; stroke-width:4; fill:none; stroke-linecap:round; }
+  </style>
+  <text x="72" y="76" class="small">SIMPLIFIED MIRRORLESS CAMERA PATH</text>
+  <text x="72" y="124" class="label">Light reaches the sensor before the camera processes and stores the image.</text>
+  <g transform="translate(74 204)">
+    <circle cx="52" cy="52" r="34" fill="#C9A96E"/>
+    <path d="M0 144c18-55 48-82 80-82s62 27 80 82H0Z" fill="#EDE4DF"/>
+    <text x="80" y="192" text-anchor="middle" class="label">Subject</text>
+  </g>
+  <path class="line" d="M242 280h132m-20-18 20 18-20 18"/>
+  <path class="line" d="M242 330h132m-20-18 20 18-20 18"/>
+  <g transform="translate(398 186)">
+    <rect x="0" y="25" width="500" height="276" rx="18" fill="#FFFFFF" stroke="#E1D5CE" stroke-width="3"/>
+    <rect x="20" y="91" width="154" height="144" rx="72" fill="#EDE4DF" stroke="#8B1E1E" stroke-width="8"/>
+    <circle cx="97" cy="163" r="27" fill="#511010"/>
+    <text x="97" y="262" text-anchor="middle" class="label">Lens</text>
+    <path d="M190 104v118" stroke="#8B1E1E" stroke-width="10"/>
+    <path d="M207 104v118" stroke="#8B1E1E" stroke-width="10"/>
+    <text x="198" y="262" text-anchor="middle" class="label">Aperture</text>
+    <rect x="295" y="82" width="18" height="164" fill="#511010"/>
+    <text x="304" y="262" text-anchor="middle" class="label">Shutter</text>
+    <rect x="361" y="73" width="78" height="181" rx="6" fill="#F1DCDC" stroke="#8B1E1E" stroke-width="5"/>
+    <text x="400" y="285" text-anchor="middle" class="label">Sensor</text>
+    <path class="line" d="M48 135l337 14M48 192l337-14"/>
+  </g>
+  <path class="line" d="M930 304h106m-20-18 20 18-20 18"/>
+  <g transform="translate(1048 232)">
+    <rect width="86" height="138" rx="10" fill="#FFFFFF" stroke="#E1D5CE" stroke-width="3"/>
+    <rect x="20" y="25" width="46" height="58" rx="4" fill="#C9A96E"/>
+    <path d="M22 102h42" stroke="#8B1E1E" stroke-width="5"/>
+    <text x="43" y="168" text-anchor="middle" class="label">Card</text>
+  </g>
+  <text x="398" y="548" class="detail">Lens and aperture shape the incoming light. The shutter sets its duration. The sensor records it.</text>
+  <text x="398" y="584" class="detail">A processor creates the image file, which is then written to the memory card.</text>
+</svg>

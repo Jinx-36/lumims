@@ -145,10 +145,10 @@ Build `/learn`.
 - [x] Page introduction.
 - [x] Display all topics in curriculum order.
 - [x] Show lesson count per topic.
-- [ ] Show progress per topic when authenticated.
+- [x] Show progress per topic when authenticated.
 - [x] Show no fake progress when logged out.
 - [x] Add topic cards with clear navigation.
-- [ ] Add a “Continue learning” module when progress exists.
+- [x] Add a “Continue learning” module when progress exists.
 - [x] Ensure layout remains easy to scan with 26 topics.
 
 ---
@@ -159,8 +159,8 @@ Build `/learn/:topicSlug`.
 
 - [x] Topic title and description.
 - [x] Ordered lesson list.
-- [ ] Lesson completion states.
-- [ ] Topic progress indicator.
+- [x] Lesson completion states.
+- [x] Topic progress indicator.
 - [x] Start/continue topic CTA.
 - [x] Handle unknown topic slug.
 - [x] Make the page useful to unauthenticated users too.
@@ -188,7 +188,7 @@ Build `/learn/:topicSlug/:lessonSlug`.
   - [x] Key takeaways block
 - [x] Previous lesson action.
 - [x] Next lesson action.
-- [ ] Complete lesson action.
+- [x] Complete lesson action.
 - [x] Handle invalid lesson/topic combinations.
 
 ---
@@ -199,46 +199,46 @@ Do not attempt all 26 topics at once.
 
 Create a complete vertical slice first.
 
-- [ ] Topic 1 — Photography Basics
-  - [ ] What Is Photography?
-  - [ ] How a Camera Works
-  - [ ] Understanding Light
-  - [ ] Exposure Explained
-  - [ ] The Exposure Triangle
-  - [ ] Understanding Stops
-- [ ] Add useful diagrams/image placeholders.
-- [ ] Add practical exercises.
-- [ ] Validate the lesson content model against these six lessons.
-- [ ] Adjust the content schema only if needed before scaling further.
+- [x] Topic 1 — Photography Basics
+  - [x] What Is Photography?
+  - [x] How a Camera Works
+  - [x] Understanding Light
+  - [x] Exposure Explained
+  - [x] The Exposure Triangle
+  - [x] Understanding Stops
+- [x] Add useful diagrams/image placeholders.
+- [x] Add practical exercises.
+- [x] Validate the lesson content model against these six lessons.
+- [x] Adjust the content schema only if needed before scaling further.
 
 ---
 
 # Phase 11 — Supabase project integration
 
-- [ ] Create Supabase client wrapper.
-- [ ] Read env variables safely.
-- [ ] Add clear error for missing Supabase configuration in development.
-- [ ] Create `profiles` table.
-- [ ] Create `lesson_progress` table.
-- [ ] Add unique `(user_id, lesson_id)` constraint.
-- [ ] Enable RLS.
-- [ ] Add policies allowing users to access only their own rows.
-- [ ] Add profile creation strategy after signup.
-- [ ] Document required SQL/migrations in the repository.
+- [x] Create Supabase client wrapper.
+- [x] Read env variables safely.
+- [x] Add clear error for missing Supabase configuration in development.
+- [x] Create `profiles` table.
+- [x] Create `lesson_progress` table.
+- [x] Add unique `(user_id, lesson_id)` constraint.
+- [x] Enable RLS.
+- [x] Add policies allowing users to access only their own rows.
+- [x] Add profile creation strategy after signup.
+- [x] Document required SQL/migrations in the repository.
 
 ---
 
 # Phase 12 — Authentication
 
-- [ ] Add auth provider/context or equivalent state layer.
-- [ ] Support session restoration.
-- [ ] Build `/login`.
-- [ ] Build `/signup`.
-- [ ] Add validation and error states.
-- [ ] Add loading state while auth session resolves.
-- [ ] Add logout.
-- [ ] Redirect authenticated users away from unnecessary login/signup screens when appropriate.
-- [ ] Keep `/learn` and lesson pages public.
+- [x] Add auth provider/context or equivalent state layer.
+- [x] Support session restoration.
+- [x] Build `/login`.
+- [x] Build `/signup`.
+- [x] Add validation and error states.
+- [x] Add loading state while auth session resolves.
+- [x] Add logout.
+- [x] Redirect authenticated users away from unnecessary login/signup screens when appropriate.
+- [x] Keep `/learn` and lesson pages public.
 
 Optional later:
 
@@ -251,15 +251,15 @@ Do not add optional providers until the base email/password flow works.
 
 # Phase 13 — Progress tracking
 
-- [ ] Load authenticated user's lesson progress.
-- [ ] Mark lesson complete.
-- [ ] Allow a completed lesson to be marked incomplete if desired.
-- [ ] Save `last_visited_at` when appropriate.
-- [ ] Update UI immediately with safe optimistic behavior or a clear loading state.
-- [ ] Handle Supabase errors without losing navigation.
-- [ ] Calculate topic completion from lesson completion.
-- [ ] Calculate overall curriculum progress.
-- [ ] Keep local content IDs stable so saved progress does not break.
+- [x] Load authenticated user's lesson progress.
+- [x] Mark lesson complete.
+- [x] Allow a completed lesson to be marked incomplete if desired.
+- [x] Save `last_visited_at` when appropriate.
+- [x] Update UI immediately with safe optimistic behavior or a clear loading state.
+- [x] Handle Supabase errors without losing navigation.
+- [x] Calculate topic completion from lesson completion.
+- [x] Calculate overall curriculum progress.
+- [x] Keep local content IDs stable so saved progress does not break.
 
 ---
 

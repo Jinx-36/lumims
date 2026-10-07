@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 870" role="img" aria-labelledby="title description">
+  <title id="title">Underexposed, intentional, and overexposed versions of one scene</title>
+  <desc id="description">Three vertically arranged versions of the same landscape: dark, detail-preserving, and bright with a clipped sky.</desc>
+  <rect width="390" height="870" fill="#F5F0EE"/>
+  <style>.heading{fill:#1F1815;font:600 19px Montserrat,Arial,sans-serif}.label{fill:#1F1815;font:600 18px Montserrat,Arial,sans-serif}.detail{fill:#6E6259;font:400 15px Montserrat,Arial,sans-serif}.small{fill:#8B1E1E;font:600 12px Montserrat,Arial,sans-serif;letter-spacing:1.2px}.frame{fill:#fff;stroke:#E1D5CE;stroke-width:2}</style>
+  <text x="24" y="38" class="small">EXPOSURE COMPARISON</text><text x="24" y="68" class="heading">The same scene can lose or</text><text x="24" y="90" class="heading">preserve detail.</text>
+  <g transform="translate(24 106)"><rect class="frame" width="342" height="208" rx="10"/><rect x="18" y="56" width="306" height="90" rx="4" fill="#511010"/><circle cx="275" cy="77" r="13" fill="#C9A96E" opacity=".4"/><path d="M18 132L110 92 191 130 257 82 324 119V146H18Z" fill="#1F1815"/><text x="18" y="175" class="label">Underexposed</text><text x="18" y="197" class="detail">Important shadows may lose detail.</text></g>
+  <g transform="translate(24 340)"><rect class="frame" width="342" height="208" rx="10"/><rect x="18" y="56" width="306" height="90" rx="4" fill="#C9A96E"/><circle cx="275" cy="77" r="13" fill="#fff"/><path d="M18 132L110 92 191 130 257 82 324 119V146H18Z" fill="#6E6259"/><text x="18" y="175" class="label">Intentional exposure</text><text x="18" y="197" class="detail">Useful subject and highlight detail remain.</text></g>
+  <g transform="translate(24 574)"><rect class="frame" width="342" height="208" rx="10"/><rect x="18" y="56" width="306" height="90" rx="4" fill="#fff"/><path d="M18 132L110 92 191 130 257 82 324 119V146H18Z" fill="#C9A96E"/><path d="M22 62h298" stroke="#F1DCDC" stroke-width="9"/><text x="18" y="175" class="label">Overexposed</text><text x="18" y="197" class="detail">Bright areas can clip to white with no detail.</text></g>
+  <text x="24" y="830" class="detail">“Correct” depends on intent; clipping is a technical limit.</text>
+</svg>

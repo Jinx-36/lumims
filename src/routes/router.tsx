@@ -2,21 +2,15 @@ import { createBrowserRouter } from 'react-router-dom'
 import { AppShell } from '../app/AppShell'
 import { PageContainer } from '../components/layout/PageContainer'
 import { LandingPage } from '../pages/LandingPage'
+import { LoginPage } from '../pages/LoginPage'
 import { LearnPage } from '../pages/LearnPage'
 import { LessonPage } from '../pages/LessonPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { PlaceholderPage } from '../pages/PlaceholderPage'
+import { SignupPage } from '../pages/SignupPage'
 import { TopicPage } from '../pages/TopicPage'
 
 const routePlaceholders = {
-  login: {
-    title: 'Log in',
-    description: 'Authentication is planned for a later phase.',
-  },
-  signup: {
-    title: 'Sign up',
-    description: 'Authentication is planned for a later phase.',
-  },
   dashboard: {
     title: 'Dashboard',
     description: 'Learning progress will be available after Supabase integration.',
@@ -81,13 +75,21 @@ function NotFoundRoute() {
   )
 }
 
+function LoginRoute() {
+  return <AppShell><LoginPage /></AppShell>
+}
+
+function SignupRoute() {
+  return <AppShell><SignupPage /></AppShell>
+}
+
 export const router = createBrowserRouter([
   { path: '/', element: <LandingRoute /> },
   { path: '/learn', element: <LearnRoute /> },
   { path: '/learn/:topicSlug', element: <TopicRoute /> },
   { path: '/learn/:topicSlug/:lessonSlug', element: <LessonRoute /> },
-  { path: '/login', element: <AppRoute page="login" /> },
-  { path: '/signup', element: <AppRoute page="signup" /> },
+  { path: '/login', element: <LoginRoute /> },
+  { path: '/signup', element: <SignupRoute /> },
   { path: '/dashboard', element: <AppRoute page="dashboard" /> },
   { path: '/profile', element: <AppRoute page="profile" /> },
   { path: '*', element: <NotFoundRoute /> },

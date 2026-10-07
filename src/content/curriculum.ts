@@ -1,4 +1,5 @@
 import type { Lesson, Topic } from '../types'
+import { photographyBasicsLessons } from './topics/photography-basics'
 
 type LessonSeed = readonly [id: string, slug: string, title: string, estimatedMinutes: number]
 export interface CurriculumLesson { topic: Topic; lesson: Lesson }
@@ -10,10 +11,17 @@ const makeLessons = (seeds: readonly LessonSeed[]): readonly Lesson[] =>
 const makeTopic = (id: string, slug: string, title: string, description: string, order: number, lessons: readonly LessonSeed[]): Topic =>
   ({ id, slug, title, description, order, lessons: makeLessons(lessons) })
 
+const makeTopicWithLessons = (
+  id: string,
+  slug: string,
+  title: string,
+  description: string,
+  order: number,
+  lessons: readonly Lesson[],
+): Topic => ({ id, slug, title, description, order, lessons })
+
 export const curriculum = [
-  makeTopic('topic-01', 'photography-basics', 'Photography Basics', 'Build a clear foundation for how cameras turn light into photographs.', 1, [
-    ['topic-01-lesson-01','what-is-photography','What Is Photography?',5], ['topic-01-lesson-02','how-a-camera-works','How a Camera Works',7], ['topic-01-lesson-03','understanding-light','Understanding Light',7], ['topic-01-lesson-04','exposure-explained','Exposure Explained',7], ['topic-01-lesson-05','the-exposure-triangle','The Exposure Triangle',8], ['topic-01-lesson-06','understanding-stops','Understanding Stops',6],
-  ]),
+  makeTopicWithLessons('topic-01', 'photography-basics', 'Photography Basics', 'Build a clear foundation for how cameras turn light into photographs.', 1, photographyBasicsLessons),
   makeTopic('topic-02', 'getting-to-know-the-lumix-gh5', 'Getting to Know the Lumix GH5', 'Get comfortable with the GH5 body, controls, modes, and menus.', 2, [
     ['topic-02-lesson-01','gh5-overview','GH5 Overview',6], ['topic-02-lesson-02','buttons-and-dials','Buttons and Dials',8], ['topic-02-lesson-03','understanding-the-screen-and-viewfinder','Understanding the Screen and Viewfinder',6], ['topic-02-lesson-04','navigating-the-gh5-menus','Navigating the GH5 Menus',8], ['topic-02-lesson-05','shooting-modes-p-a-s-and-m','Shooting Modes: P, A, S and M',8], ['topic-02-lesson-06','custom-modes-c1-c2-and-c3','Custom Modes C1, C2 and C3',6],
   ]),

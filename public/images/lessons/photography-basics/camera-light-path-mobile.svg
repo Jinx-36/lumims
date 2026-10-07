@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 800" role="img" aria-labelledby="title description">
+  <title id="title">Light path through a mirrorless camera</title>
+  <desc id="description">A vertical camera flow diagram showing subject light, lens and aperture, exposure timing, sensor, processor, and memory card.</desc>
+  <rect width="390" height="800" fill="#F5F0EE"/>
+  <style>.heading{fill:#1F1815;font:600 19px Montserrat,Arial,sans-serif}.label{fill:#1F1815;font:600 18px Montserrat,Arial,sans-serif}.detail{fill:#6E6259;font:400 15px Montserrat,Arial,sans-serif}.small{fill:#8B1E1E;font:600 12px Montserrat,Arial,sans-serif;letter-spacing:1.2px}.node{fill:#fff;stroke:#E1D5CE;stroke-width:2}.arrow{stroke:#8B1E1E;stroke-width:3;fill:none;stroke-linecap:round}</style>
+  <text x="24" y="38" class="small">SIMPLIFIED MIRRORLESS CAMERA PATH</text><text x="24" y="68" class="heading">Capture happens before processing</text><text x="24" y="90" class="heading">and storage.</text>
+  <g transform="translate(32 106)"><rect class="node" width="326" height="74" rx="10"/><text x="22" y="32" class="label">1. Subject light</text><text x="22" y="55" class="detail">Light travels from the scene to the lens.</text></g><path class="arrow" d="M195 192v25m-11-12 11 12 11-12"/>
+  <g transform="translate(32 230)"><rect class="node" width="326" height="94" rx="10"/><text x="22" y="32" class="label">2. Lens and aperture</text><text x="22" y="55" class="detail">The lens directs light; aperture sets</text><text x="22" y="76" class="detail">the opening size.</text></g><path class="arrow" d="M195 336v25m-11-12 11 12 11-12"/>
+  <g transform="translate(32 374)"><rect class="node" width="326" height="74" rx="10"/><text x="22" y="32" class="label">3. Exposure timing</text><text x="22" y="55" class="detail">The shutter sets the capture duration.</text></g><path class="arrow" d="M195 460v25m-11-12 11 12 11-12"/>
+  <g transform="translate(32 498)"><rect class="node" width="326" height="74" rx="10"/><text x="22" y="32" class="label">4. Sensor</text><text x="22" y="55" class="detail">The sensor converts received light to data.</text></g><path class="arrow" d="M195 584v25m-11-12 11 12 11-12"/>
+  <g transform="translate(32 622)"><rect class="node" width="326" height="94" rx="10"/><text x="22" y="32" class="label">5. Processing and card</text><text x="22" y="55" class="detail">The camera makes an image file and writes</text><text x="22" y="76" class="detail">it to the memory card.</text></g>
+  <text x="24" y="762" class="small">LIGHT → DATA → IMAGE FILE</text>
+</svg>

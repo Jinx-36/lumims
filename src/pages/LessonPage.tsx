@@ -1,13 +1,16 @@
 import { motion, useReducedMotion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { pageContainerClassName } from '../components/layout/PageContainer'
-import { LessonBody } from '../components/learning/LessonBody'
+import { LessonBody, LessonSources } from '../components/learning/LessonBody'
 import {
   LessonSidebar,
   MobileLessonNavigation,
 } from '../components/learning/LessonNavigation'
 import { buttonClassName } from '../components/ui/Button'
+import { useAuth } from '../components/auth/AuthProvider'
+import { useProgress } from '../components/learning/ProgressProvider'
 import {
   getLessonBySlug,
   getLessonPosition,
@@ -83,15 +86,22 @@ function LessonLink({
 }
 
 export function LessonPage() {
+  const { status } = useAuth()
+  const { isLessonCompleted, recordLessonVisit, setLessonCompleted, error } = useProgress()
   const { lessonSlug, topicSlug } = useParams()
   const result = getLessonBySlug(topicSlug ?? '', lessonSlug ?? '')
   const shouldReduceMotion = useReducedMotion()
+  const [isSaving, setIsSaving] = useState(false)
+  const visitedLessonId = useRef<string | null>(null)
+
+  useEffect(() => { if (status === 'authenticated' && result && visitedLessonId.current !== result.lesson.id) { visitedLessonId.current = result.lesson.id; void recordLessonVisit(result.lesson.id).catch(() => undefined) } }, [recordLessonVisit, result, status])
 
   if (!result) {
     return <LessonNotFound topicSlug={topicSlug} />
   }
 
   const { lesson, topic } = result
+  const completed = isLessonCompleted(lesson.id)
   const lessonPosition = getLessonPosition(topic.slug, lesson.slug)
   const previousLesson = getPreviousLesson(topic.slug, lesson.slug)
   const nextLesson = getNextLesson(topic.slug, lesson.slug)
@@ -158,6 +168,15 @@ export function LessonPage() {
             <div className="mt-10">
               <LessonBody sections={lesson.sections} />
             </div>
+
+            {lesson.sources?.length ? (
+              <div className="mt-10">
+                <LessonSources sources={lesson.sources} />
+              </div>
+            ) : null}
+            <section className="mt-10 border-y border-border py-6" aria-label="Lesson progress">
+              {status === 'authenticated' ? <><p className="type-label text-accent">Your progress</p><p className="mt-2 text-sm text-ink-muted">{completed ? 'This lesson is complete.' : 'Mark this lesson complete when you are ready.'}</p><button className={buttonClassName({ className: 'mt-4', variant: completed ? 'secondary' : 'primary' })} disabled={isSaving} onClick={() => { setIsSaving(true); void setLessonCompleted(lesson.id, !completed).catch(() => undefined).finally(() => setIsSaving(false)) }} type="button">{isSaving ? 'Saving…' : completed ? 'Mark as incomplete' : 'Complete lesson'}</button>{error ? <p className="mt-3 text-sm text-accent" role="status">{error}</p> : null}</> : <p className="text-sm text-ink-muted"><Link className="font-semibold text-accent hover:underline" to="/login">Sign in</Link> to save your progress.</p>}
+            </section>
 
             <nav
               aria-label="Lesson navigation"

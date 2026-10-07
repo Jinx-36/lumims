@@ -4,6 +4,7 @@ export type {
   Gh5SetupSetting,
   KeyTakeawaysLessonSection,
   Lesson,
+  LessonSource,
   LessonSection,
   LessonSectionKind,
   MediaLessonSection,

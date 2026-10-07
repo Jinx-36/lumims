@@ -1,0 +1,5 @@
+- There are too much blanc on the lessons pages
+- Make the navbar and the sidebars sticky and always visible
+- Add a button to reveal the password on login and singin
+- Change the mail auth confirmation more professionnal and not from supabase
+- Make sure we arrive on top of the page when we access a new lesson
