@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "typecheck": "tsc -b --pretty false",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cloudflare:preview": "npm run build && wrangler dev",
+    "cloudflare:deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
@@ -30,6 +32,7 @@
     "tailwindcss": "^4.1.13",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.42.0",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "wrangler": "4.148.0"
   }
 }
